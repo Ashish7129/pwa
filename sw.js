@@ -23,3 +23,15 @@ self.addEventListener("fetch", function(e) {
     })
   );
 });
+self.addEventListener("push", function(event) {
+  console.log("[Service Worker] Push Received.");
+
+  const title = "Push Codelab";
+  const options = {
+    body: "Yay it works.",
+    icon: "images/fox1.jpg",
+    badge: "images/fox2.jpg"
+  };
+
+  event.waitUntil(self.registration.showNotification(title, options));
+});
