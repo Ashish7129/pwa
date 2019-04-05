@@ -15,6 +15,26 @@
   );
 });
 */
+self.registration.showNotification("Hello Test notifications", {
+  body: "Hello test paragraph",
+  icon: "/icon/fox-icon.png",
+  badge: "/icon/fox-icon.png",
+  image:
+    "https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  actions: [
+    {
+      action: "add",
+      title: "Add",
+      icon: "https://image.flaticon.com/icons/svg/61/61112.svg"
+    },
+    {
+      action: "rate",
+      title: "Rate",
+      icon: "https://image.flaticon.com/icons/svg/61/61112.svg"
+    }
+  ]
+});
+
 const cacheName = "v1";
 
 const cacheAssets = ["/index.html", "/style.css"];
