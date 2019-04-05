@@ -70,6 +70,12 @@
       // Stash the event so it can be triggered later on the button event.
       alert("in prompt");
       e.prompt();
+      e.userChoice.then(choiceResult => {
+        if (choiceResult.outcome === "accepted") {
+          console.log("User accepted the prompt");
+        } else {
+          console.log("User dismissed the prompt");
+        }
       // Update UI by showing a button to notify the user they can add to home screen
     });
     /*
