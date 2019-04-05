@@ -27,7 +27,7 @@
     // Register service worker to control making site work offline
 
     if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("/pwa/sw.js").then(function() {
+      navigator.serviceWorker.register("../sw.js").then(function() {
         console.log("Service Worker Registered");
       });
     }
@@ -61,19 +61,19 @@
           deferredPrompt = null;
         });
       });
-    });*/
-   let deferredPrompt;
+    });
+    let deferredPrompt;
     const addBtn = document.querySelector(".add-button");
-    addBtn.style.display = "none";
+    addBtn.style.display = "none";*/
     window.addEventListener("beforeinstallprompt", e => {
       // Prevent Chrome 67 and earlier from automatically showing the prompt
-      e.preventDefault();
+      //e.preventDefault();
       // Stash the event so it can be triggered later on the button event.
-      deferredPrompt = e;
+      e.prompt();
       // Update UI by showing a button to notify the user they can add to home screen
       addBtn.style.display = "block";
     });
-
+    /*
     //button click event to show the promt
     addBtn.addEventListener("click", e => {
       // hide our user interface that shows our button
@@ -89,6 +89,6 @@
         }
         deferredPrompt = null;
       });
-    });
+    });*/
   </script>
 </html>

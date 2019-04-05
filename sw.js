@@ -15,23 +15,33 @@
   );
 });
 */
+const cacheName = "v1";
+
+const cacheAssets = ["/index.html", "/style.css"];
+
+self.addEventListener("install", e => {
+  console.log("service Worker installed");
+
+  e.waitUntil(
+    caches
+      .open(cacheName)
+      .then(cache => {
+        console.log("service worker : caching files");
+        cache.addAll(cacheAssets);
+      })
+      .then(() => self.skipWaiting())
+  );
+});
+
+self.addEventListener("activate", e => {
+  console.log("service Worker activated");
+});
+
 self.addEventListener("fetch", function(e) {
-  console.log(e.request.url);
+  console.log("service worker: fetched");
   e.respondWith(
     caches.match(e.request).then(function(response) {
       return response || fetch(e.request);
     })
   );
-});
-self.addEventListener("push", function(event) {
-  console.log("[Service Worker] Push Received.");
-
-  const title = "Push Codelab";
-  const options = {
-    body: "Yay it works.",
-    icon: "images/fox1.jpg",
-    badge: "images/fox2.jpg"
-  };
-
-  event.waitUntil(self.registration.showNotification(title, options));
 });
