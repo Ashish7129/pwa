@@ -8,7 +8,6 @@
   </head>
   <body>
     <img src="images/fox1.jpg" alt="a fox picture" />
-    <button class="add-button">Add to home screen</button>
   </body>
   <script>
     const images = ["fox1", "fox2", "fox3", "fox4"];
@@ -27,7 +26,7 @@
     // Register service worker to control making site work offline
 
     if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("../sw.js").then(function() {
+      navigator.serviceWorker.register("/pwa/sw.js").then(function() {
         console.log("Service Worker Registered");
       });
     }
@@ -71,7 +70,6 @@
       // Stash the event so it can be triggered later on the button event.
       e.prompt();
       // Update UI by showing a button to notify the user they can add to home screen
-      addBtn.style.display = "block";
     });
     /*
     //button click event to show the promt
