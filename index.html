@@ -68,9 +68,10 @@
       // Prevent Chrome 67 and earlier from automatically showing the prompt
       //e.preventDefault();
       // Stash the event so it can be triggered later on the button event.
-      e.prompt();
+      deferredPrompt = e;
+      deferredPrompt.prompt();
 
-      e.userChoice.then(choiceResult => {
+      deferredPrompt.userChoice.then(choiceResult => {
         if (choiceResult.outcome === "accepted") {
           console.log("User accepted the prompt");
         } else {
